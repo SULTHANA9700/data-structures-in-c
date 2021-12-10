@@ -1,0 +1,96 @@
+                                                                                                     #include<stdio.h>  
+                                                                                                     #include<stdlib.h> 
+                                                                                                     struct node{        
+                                                                                                     int data;           
+                                                                                                     struct node* next;  
+                                                                                                     }*newnode,*temp,*head,*tail;    
+                                                                                                     struct node *head=NULL;       
+                                                                                                     struct node *tail=NULL;      
+                                                                                                     void create()                 
+                                                                                                     {                          
+                                                                                                     int v;                      
+                                                                                                     int ch;                     
+                                                                                                     do                          
+                                                                                                     {                            
+                                                                                                     newnode=(struct node*)malloc(sizeof(struct node)); 
+                                                                                                     printf("enter the value of the node");             
+                                                                                                     scanf("%d",&v);                                   
+                                                                                                     newnode->data=v;                     
+                                                                                                     newnode->next=NULL;                    
+                                                                                                     if(head==NULL)               
+                                                                                                     {                         
+                                                                                                     head=newnode;                   
+                                                                                                     tail=newnode;   
+                                                                                                     }              
+                                                                                                     else             
+                                                                                                     {                  
+                                                                                                     tail->next=newnode;  
+                                                                                                     tail=newnode;         
+                                                                                                     }                       
+                                                                                                     printf("enter 1 to continue and 0 to exit");    
+                                                                                                     scanf("%d",&ch);                      
+                                                                                                     }while(ch==1); 
+                                                                                                     }               
+                                                                                                     void display() 
+                                                                                                     {              
+                                                                                                     
+                                                                                                     temp=head;  
+                                                                                                     while(temp!=NULL)
+                                                                                                     {                 
+                                                                                                     printf("%d ",temp->data); 
+                                                                                                     temp=temp->next;           
+                                                                                                     }                     
+                                                                                                     }                    
+                                                                                                     void insertion_beg() 
+                                                                                                     {                     
+                                                                                                     int k;               
+                                                                                                     temp=head;           
+                                                                                                     printf("enter the value"); 
+                                                                                                     scanf("%d",&k);        
+                                                                                                     newnode=(struct node*)malloc(sizeof(struct node)); 
+                                                                                                     newnode->data=k;                                 
+                                                                                                     newnode->next=temp;                    
+                                                                                                     head=newnode;                           
+                                                                                                     }                                  
+                                                                                                     void insertion_end()              
+                                                                                                     {                                  
+                                                                                                     int h;                         
+                                                                                                     temp=tail;                    
+                                                                                                     printf("enter the value");     
+                                                                                                     scanf("%d",&h);                  
+                                                                                                     newnode=(struct node*)malloc(sizeof(struct node));  
+                                                                                                     newnode->data=h;                              
+                                                                                                     newnode->next=NULL;                            
+                                                                                                     tail->next=newnode;                           
+                                                                                                     tail=newnode;                                 
+                                                                                                     }                                             
+                                                                                                     void insertion_pos()                          
+                                                                                                     {                                             
+                                                                                                     temp=head;                                    
+                                                                                                     int u,p;                                      
+                                                                                                     printf("enter the value");                    
+                                                                                                     scanf("%d",&u);                               
+                                                                                                     printf("enter the position");                 
+                                                                                                     scanf("%d",&p);                               
+                                                                                                     newnode=(struct node*)malloc(sizeof(struct node));  
+                                                                                                     for(int i=1;i<p-1;i++)                               
+                                                                                                     {                                                    
+                                                                                                     temp=temp->next;                                     
+                                                                                                     }                                                    
+                                                                                                     newnode->data=p;                                     
+                                                                                                     newnode->next=temp->next;                            
+                                                                                                     temp->next=newnode;                                  
+                                                                                                     }                                                    
+                                                                                                     void main()                                          
+                                                                                                     {                                                    
+                                                                                                     //struct node* head=NULL;                            
+                                                                                                     //struct node* tail=NULL;                           
+                                                                                                     create();                                           
+                                                                                                     display();                                          
+                                                                                                     insertion_beg();                                    
+                                                                                                     display();                                          
+                                                                                                     insertion_end();                                    
+                                                                                                     display();   
+                                                                                                     insertion_pos();                 
+                                                                                                     display();   
+                                                                                                     }           
